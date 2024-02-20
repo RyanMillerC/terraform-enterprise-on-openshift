@@ -1,0 +1,6 @@
+database_service_name: redis
+memory_limit: 512Mi
+namespace: terraform-enterprise
+redis_password: password
+redis_version: 6-el8
+volume_capacity: 1Gi

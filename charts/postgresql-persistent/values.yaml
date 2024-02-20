@@ -1,0 +1,11 @@
+database_service_name: postgresql-persistent
+memory_limit: 512Mi
+namespace: terraform-enterprise
+volume_capacity: 1Gi
+config:
+  postgresql_database: tfe
+  postgresql_password: tfe
+  postgresql_user: tfe
+  port: 5432
+image:
+  tag: "13-el8"

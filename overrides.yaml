@@ -1,0 +1,40 @@
+replicaCount: 1
+image:
+  repository: images.releases.hashicorp.com
+  name: hashicorp/terraform-enterprise
+  tag: v202401-2
+securityContext:
+  # I couldn't get runAsNonRoot working on OpenShift with any combination of
+  # runAsUser, runAsGroup, and fsGroup.
+  #runAsNonRoot: true
+  runAsUser: 0
+  runAsGroup: 0
+  fsGroup: 0
+service:
+  type: ClusterIP
+env:
+  variables:
+    TFE_HOSTNAME: terraform-enterprise.apps.hub.taco.moe
+    TFE_IACT_SUBNETS: "192.168.1.1/24"
+
+    # Database settings
+    TFE_DATABASE_HOST: "postgresql-persistent.terraform-enterprise.svc.cluster.local:5432"
+    TFE_DATABASE_NAME: tfe
+    TFE_DATABASE_PARAMETERS: "sslmode=disable"
+    TFE_DATABASE_USER: tfe
+
+    # Redis settings
+    TFE_REDIS_HOST: "redis.terraform-enterprise.svc.cluster.local"
+    TFE_REDIS_USE_TLS: false
+    TFE_REDIS_USE_AUTH: true
+    # Red Hat's Redis 6 image doesn't support username; It only supports password
+    # TFE_REDIS_USER: redis
+
+    # S3 settings. For Server Side Encryption settings, see to the configuration reference.
+    TFE_OBJECT_STORAGE_TYPE: s3
+    TFE_OBJECT_STORAGE_S3_BUCKET: terraform-enterprise
+    TFE_OBJECT_STORAGE_S3_ENDPOINT: "https://minio.apps.hub.taco.moe"
+    TFE_OBJECT_STORAGE_S3_USE_INSTANCE_PROFILE: false
+
+    # This is a required environment variable - but I'm not 100% it's used
+    TFE_OBJECT_STORAGE_S3_REGION: us-east-2

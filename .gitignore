@@ -1,0 +1,10 @@
+# Ignore Hashicorp License files
+*.hclic
+
+# Ignore certs and related files
+*.crt
+*.ca
+*.key
+
+# Ignore Helm chart secrets
+secrets.yaml

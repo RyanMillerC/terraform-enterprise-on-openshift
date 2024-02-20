@@ -1,0 +1,6 @@
+apiVersion: v2
+name: sno-minio-deployment
+description: "Deploy MinIO S3-capatible object storage on SNO (Single-Node OpenShift)"
+type: application
+version: 1.0.0
+appVersion: "RELEASE.2021-10-27T16-29-42Z"

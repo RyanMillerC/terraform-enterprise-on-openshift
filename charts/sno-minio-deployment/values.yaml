@@ -1,0 +1,22 @@
+# Container image used by deployment/pods
+image: "docker.io/minio/minio:RELEASE.2021-10-27T16-29-42Z"
+
+ingress:
+
+  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  # !!! REPLACE THIS SECTION WITH YOUR DNS NAME !!!
+  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  # MinIO API DNS name. This is the S3 API.  Don't prefix with "https://"
+  minioApiDnsName: "minio.apps.hub.taco.moe"
+
+  # MinIO Console DNS name. This is a management web console. Don't prefix with "https://"
+  minioConsoleDnsName: "minio-console.apps.hub.taco.moe"
+
+  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# user.accessKey and user.secretAccessKey are used to log into both the S3 API
+# and the web management console.
+user:
+  accessKey: "my-access-key"
+  secretAccessKey: "my-secret-key"

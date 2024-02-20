@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: terraform-enterprise
+spec:
+  # host: "{{ .Values.env.variables.TFE_HOSTNAME }}"
+  host: terraform-enterprise.apps.hub.taco.moe
+  port:
+    targetPort: https-port
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: passthrough
+  to:
+    kind: Service
+    name: terraform-enterprise
+    weight: 100
+  wildcardPolicy: None
